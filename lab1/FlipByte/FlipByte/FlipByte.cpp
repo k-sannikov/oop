@@ -11,14 +11,14 @@ void ErrorDisplay()
 
 bool IsStrNumber(string str)
 {
-	for (int i = 0; i < str.length(); i++)
+	for (int i = 1; i < str.length(); i++)
 	{
 		if (!isdigit(str[i]))
 		{
 			return false;
 		}
 	}
-	return str != "";
+	return str != "" || str[0] == (char)"-";
 }
 
 int ParseArg(int argc, char* argv[])

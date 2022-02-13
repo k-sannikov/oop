@@ -45,6 +45,10 @@ set /p result=<"%TEMP%\output.txt"
 if not %result% == 130 goto err
 echo Test 8 passed
 
+REM Тест 9: Запуск с передачей символа минус
+%MyProgram% - > nul && goto err
+echo Test 9 passed
+
 REM Тесты прошли успешно
 echo All tests passed successfull
 exit /B 0

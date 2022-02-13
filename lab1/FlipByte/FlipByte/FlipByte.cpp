@@ -18,7 +18,7 @@ bool IsStrNumber(string str)
 			return false;
 		}
 	}
-	return str != "" || str[0] == (char)"-";
+	return isdigit(str[0]) || (str[0] == '-' && (str.length() > 1));
 }
 
 int ParseArg(int argc, char* argv[])

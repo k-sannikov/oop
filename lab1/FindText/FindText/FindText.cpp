@@ -5,6 +5,13 @@
 
 using namespace std;
 
+const string errCountArg = "Invalid arguments count\n";
+const string errArg = "Invalid arguments <text to search>\n";
+const string usingProgram = "Usage: findtext.exe <file name> <text to search>\n";
+const string errReadData = "Failed to read data from input file\n";
+const string errNotFound = "Text not found\n";
+const string errFailedOpen = "Failed to open file for reading\n";
+
 struct Args
 {
 	string inputFileName;
@@ -15,14 +22,14 @@ optional<Args> ParseArgs(int argc, char* argv[])
 {
 	if (argc != 3)
 	{
-		cout << "Invalid arguments count\n";
-		cout << "Usage: findtext.exe <file name> <text to search>\n";
+		cout << errCountArg;
+		cout << usingProgram;
 		return nullopt;
 	}
 
 	if (string(argv[2]).length() == 0)
 	{
-		cout << "Invalid arguments <text to search>\n";
+		cout << errArg;
 		return nullopt;
 	}
 
@@ -47,8 +54,13 @@ int main(int argc, char* argv[])
 
 	if (!input.is_open())
 	{
-		cout << "Failed to open '" << args->inputFileName << "' for reading\n";
+		cout << errFailedOpen;
 		return 1;
+	}
+
+	if (input.bad())
+	{
+		cout << errReadData;
 	}
 
 	// поиск подстроки в файле
@@ -68,16 +80,11 @@ int main(int argc, char* argv[])
 			}
 		}
 	}
-
+	 
 	if (!isFound)
 	{
-		cout << "Text not found" << endl;
+		cout << errNotFound;
 		return 1;
-	}
-
-	if (input.bad())
-	{
-		cout << "Failed to read data from input file\n";
 	}
 
 	return 0;

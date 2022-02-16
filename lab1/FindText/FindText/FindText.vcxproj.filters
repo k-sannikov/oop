@@ -22,6 +22,8 @@
   <ItemGroup>
     <Text Include="NonEmpty.txt" />
     <Text Include="Empty.txt" />
+    <Text Include="EmptyString.txt" />
+    <Text Include="WarAndPeace.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Tests.bat">

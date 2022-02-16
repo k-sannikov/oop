@@ -161,7 +161,9 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Empty.txt" />
+    <Text Include="EmptyString.txt" />
     <Text Include="NonEmpty.txt" />
+    <Text Include="WarAndPeace.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format" />

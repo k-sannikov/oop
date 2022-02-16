@@ -3,10 +3,16 @@
 
 using namespace std;
 
+const string usingProgram = "Usage: FlipByte.exe <input byte>\n";
+const string warningTypeInputData = "*<input byte> is number from 0 to 255\n";
+const string errCountArg = "Invalid arguments count\n";
+const string errTypeArg = "Invalid arguments type\n";
+const string errValueArg = "Invalid argument value\n";
+
 void ErrorDisplay()
 {
-	cout << "Usage: FlipByte.exe <input byte>\n";
-	cout << "*<input byte> is number from 0 to 255\n";
+	cout << usingProgram;
+	cout << warningTypeInputData;
 }
 
 bool IsStrNumber(string str)
@@ -26,13 +32,13 @@ int ParseArg(int argc, char* argv[])
 	if (argc != 2)
 	{
 		ErrorDisplay();
-		cout << "Invalid argument count\n";
+		cout << errCountArg;
 		return -1;
 	}
 
 	if (!IsStrNumber(static_cast<string>(argv[1])))
 	{
-		cout << "Invalid argument type\n";
+		cout << errTypeArg;
 		ErrorDisplay();
 		return -1;
 	}
@@ -41,7 +47,7 @@ int ParseArg(int argc, char* argv[])
 
 	if ((number < 0) || (number > 255))
 	{
-		cout << "Invalid argument value\n";
+		cout << errValueArg;
 		ErrorDisplay();
 		return -1;
 	}
